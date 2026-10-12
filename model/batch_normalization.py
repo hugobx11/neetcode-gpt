@@ -16,9 +16,9 @@ class Solution:
         running_mean = np.array(running_mean)
         running_var = np.array(running_var)
 
-        mu_B = np.mean(x, axis=0)
-        sigma_B_2 = np.mean((x - mu_B) ** 2, axis=0)
         if training:
+            mu_B = np.mean(x, axis=0)
+            sigma_B_2 = np.mean((x - mu_B) ** 2, axis=0)
             running_mean = (1 - momentum) * running_mean + momentum * mu_B
             running_var =  (1 - momentum) * running_var + momentum * sigma_B_2
             x_hat = (x - mu_B) / np.sqrt(sigma_B_2 + eps)
